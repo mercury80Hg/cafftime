@@ -5,27 +5,54 @@ function Log() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    getLogs().then((res) => setLogs(res));
-  }, [])
+    getLogs().then((res) => {
+      const groupedLogs = res.reduce((acc, log) => {
+        const date = new Date(log.timestamp).toDateString();
+        if (acc[date]) {
+          acc[date].push(log);
+        } else {
+          acc[date] = [log];
+        }
+        return acc;
+      }, {});
+
+      const groupedLogsArray = Object.entries(groupedLogs).map(
+        ([date, logs]) => {
+          return { date, logs };
+        }
+      );
+
+      setLogs(groupedLogsArray);
+    });
+  }, []);
 
 
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
-      <div class="relative px-4">
-        <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
-      {logs.map((log) => {
+      <div className="relative px-4">
+        {logs.map((log) => {
         return (
-          <div class="flex items-center w-full my-6 -ml-1.5">
-            <div class="w-1/6 z-10">
-              <div class="w-3.5 h-3.5 bg-amber-600 rounded-full"></div>
-            </div>
-            <div class="w-5/6">
-              <p class="text-sm">
-                {log.baseAmount}ml of {log.name}
-              </p>
-              <p class="text-sm text-red-500">{log.caffeine}mg</p>
-              <p class="text-xs text-gray-500">{log.timestamp}</p>
-            </div>
+          <div className="border-b-2 py-4" key={log.date}>
+            <p className="text-2xl font-bold text-left">{log.date}</p>
+            {log.logs.map((item) => {
+              return (
+                <div
+                  className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 my-2"
+                  key={item._id}
+                >
+                  <span>
+                    {item.name} {item.baseAmount}ml --- 
+                  </span>
+                  <span className="text-red-500"> {item.caffeine}mg</span>
+                  <p>
+                    {new Date(item.timestamp).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         );
       })}
