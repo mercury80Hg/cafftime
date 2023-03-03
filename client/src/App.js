@@ -1,5 +1,6 @@
 import './App.css';
 import { Route, Routes, Link, useLocation } from "react-router-dom";
+import * as ApiService from './ApiService';
 import Log from './pages/Log';
 import Daily from './pages/Daily';
 import AddData from './pages/AddData';

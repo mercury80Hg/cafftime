@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { postLog } from '../ApiService';
 
 
 function DataDetail({ selectedItem, showDetail }) {
@@ -26,20 +27,21 @@ function DataDetail({ selectedItem, showDetail }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setNewLog({
+    const updatedLog = {
       ...newLog,
       name: e.target.name.value,
       baseAmount: e.target.baseAmount.value,
       caffeine: e.target.caffeine.value,
       timestamp: e.target.timestamp.value,
-    });
-    // navigate("/log");
+    };
+    setNewLog(updatedLog);
+    handlePost(updatedLog);
   }
 
-  useEffect(() => {
-    console.log(newLog);
-    // navigate("/log");
-  }, [newLog]);
+  function handlePost(updatedLog) {
+    postLog(updatedLog);
+    navigate("/log");
+  }
 
 
   /* show selected Item and allow users to edit detail */
