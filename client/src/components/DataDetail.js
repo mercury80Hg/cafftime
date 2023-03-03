@@ -7,6 +7,7 @@ function DataDetail({ selectedItem, showDetail }) {
   const navigate = useNavigate();
 
   const [newLog, setNewLog] = useState({ ...selectedItem });
+
   const caffeineRatio = selectedItem.caffeine / selectedItem.baseAmount;
 
   function handleChange(e) {
@@ -38,11 +39,10 @@ function DataDetail({ selectedItem, showDetail }) {
     handlePost(updatedLog);
   }
 
-  function handlePost(updatedLog) {
+function handlePost(updatedLog) {
     postLog(updatedLog);
     navigate("/log");
   }
-
 
   /* show selected Item and allow users to edit detail */
   if (showDetail && selectedItem.id) {

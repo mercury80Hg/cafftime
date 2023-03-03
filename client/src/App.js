@@ -1,18 +1,48 @@
 import './App.css';
+import { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
-import * as ApiService from './ApiService';
+import { getLogs } from "../src/ApiService"
 import Log from './pages/Log';
 import Daily from './pages/Daily';
 import AddData from './pages/AddData';
 
 function App() {
   const location = useLocation();
-  if (location.pathname === '/add') {
+  const [logs, setLogs] = useState([]);
+  const [todaySum, setTodaySum] = useState(null);
+
+  useEffect(() => {
+    getLogs().then((res) => {
+      const groupedLogs = res.reduce((acc, log) => {
+        const date = new Date(log.timestamp).toDateString();
+        if (acc[date]) {
+          acc[date].push(log);
+        } else {
+          acc[date] = [log];
+        }
+        return acc;
+      }, {});
+
+      const groupedLogsArray = Object.entries(groupedLogs).map(
+        ([date, logs]) => {
+          return { date, logs };
+        }
+      );
+
+      setLogs(groupedLogsArray);
+      setTodaySum(groupedLogsArray[0].logs.reduce((acc, log) => {
+        acc = acc + log.caffeine;
+        return acc;
+      }, 0))
+    });
+  }, [logs]);
+
+    if (location.pathname === '/add') {
     return (
       <div className="App relative">
         <Routes>
-          <Route path="/log" element={<Log />} />
-          <Route path="/" element={<Daily />} />
+          <Route path="/log" element={<Log logs={logs} setLogs={setLogs} />} />
+          <Route path="/" element={<Daily todaySum={todaySum} />} />
           <Route path="/add" element={<AddData />} />
         </Routes>
       </div>
@@ -21,8 +51,8 @@ function App() {
   return (
     <div className="App relative">
       <Routes>
-        <Route path="/log" element={<Log />} />
-        <Route path="/" element={<Daily />} />
+        <Route path="/log" element={<Log logs={logs} setLogs={setLogs} />} />
+        <Route path="/" element={<Daily todaySum={todaySum} />} />
         <Route path="/add" element={<AddData />} />
       </Routes>
       <Link to="/add">

@@ -1,6 +1,4 @@
 
-import { useEffect } from "react";
-
 function SearchResult({ searchResult, showList, selectedItem, setSelectedItem, setShowList, setShowDetail }) {
 
   const handleClick = (e) => {

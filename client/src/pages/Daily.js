@@ -1,7 +1,19 @@
-function Daily() {
+import PieChart from '../components/PieChart';
+
+function Daily({ todaySum }) {
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
-      <h1> daily summary page </h1>
+      <h1 className="text-2xl font-bold mt-8"> TODAY </h1>
+      <div className="block p-6 bg-gray-50 border border-gray-200 rounded-lg shadow m-2 flex justify-between items-center">
+        <div className="w-1/2">
+          <PieChart todaySum={todaySum}></PieChart>
+        </div>
+        <div className="w-1/2">
+          <p className="text-2xl font-bold mt-8">{todaySum} mg</p>
+          <hr />
+          <p className="text-2xl font-bold mt-8">400 mg</p>
+        </div>
+      </div>
     </div>
   );
 }

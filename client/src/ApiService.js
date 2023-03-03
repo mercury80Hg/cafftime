@@ -13,6 +13,5 @@ export const postLog = async (newLog) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newLog),
   });
-  console.log('posted!');
   return response.json();
 };
