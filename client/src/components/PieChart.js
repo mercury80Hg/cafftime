@@ -14,15 +14,13 @@ function PieChart({ todaySum }) {
         scaleBeginAtZero: true,
       },
     ],
-    options: {
-      animation: {
-        duration: 0, // general animation time
-      },
-      rotation: 1 * Math.PI,
-      circumference: 1 * Math.PI,
-    },
   };
-  return <Doughnut data={data}/>;
+
+   const options = {
+     animation: false,
+   };
+  
+  return <Doughnut data={data} options={options} />;
 }
 
 export default PieChart;
