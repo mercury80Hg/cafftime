@@ -9,7 +9,7 @@ function Log({ logs }) {
             <div className="border-b-2 py-4" key={log.date}>
               <p className="text-2xl font-bold text-left">{log.date}</p>
               <p className="text-2xl font-bold text-left">
-                Total:{" "}
+                Total Caffeine {" "}
                 <span className="text-2xl font-bold text-red-500">
                   {log.logs.reduce((acc, log) => {
                     acc = acc + log.caffeine;

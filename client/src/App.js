@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
 import { getLogs } from "../src/ApiService"
+import { getDatabase } from '../src/ApiService';
 import Log from './pages/Log';
 import Daily from './pages/Daily';
 import AddData from './pages/AddData';
@@ -11,6 +12,13 @@ function App() {
   const location = useLocation();
   const [logs, setLogs] = useState([]);
   const [todaySum, setTodaySum] = useState(null);
+  const [foodDb, setFoodDb] = useState([]);
+
+  useEffect(() => {
+    getDatabase().then((res) => {
+      setFoodDb(res);
+    })
+  }, [])
 
   useEffect(() => {
     getLogs().then((res) => {
@@ -44,7 +52,7 @@ function App() {
         <Routes>
           <Route path="/log" element={<Log logs={logs} />} />
           <Route path="/" element={<Daily todaySum={todaySum} />} />
-          <Route path="/add" element={<AddData />} />
+          <Route path="/add" element={<AddData foodDb={foodDb} />} />
           <Route path="/log/edit/:id" element={<EditData />} />
         </Routes>
       </div>

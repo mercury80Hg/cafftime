@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { postLog } from '../ApiService';
 
@@ -7,7 +7,6 @@ function DataDetail({ selectedItem, showDetail }) {
   const navigate = useNavigate();
   const [newLog, setNewLog] = useState({ ...selectedItem });
   const caffeineRatio = selectedItem.caffeine / selectedItem.baseAmount;
-
   function handleChange(e) {
     if (e.target.name === "baseAmount") {
       const caffeineValue = Math.round(caffeineRatio * e.target.value);
@@ -43,7 +42,7 @@ function handlePost(updatedLog) {
   }
 
   /* show selected Item and allow users to edit detail */
-  if (showDetail && selectedItem.id) {
+  if (showDetail && selectedItem._id) {
     return (
       <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <img src={selectedItem.imageUrl} className="w-24 m-4"></img>

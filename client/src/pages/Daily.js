@@ -1,5 +1,6 @@
 import PieChart from '../components/PieChart';
 
+
 function Daily({ todaySum }) {
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
@@ -14,6 +15,10 @@ function Daily({ todaySum }) {
           <p className="text-2xl font-bold mt-8">400 mg</p>
         </div>
       </div>
+          <p className="text-xs">
+            For healthy adults, the FDA has cited 400 milligrams a day as an amount not generally
+            associated with dangerous, negative effects.
+          </p>
     </div>
   );
 }

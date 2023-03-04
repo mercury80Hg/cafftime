@@ -3,10 +3,8 @@ import { useState } from "react";
 import Search from '../components/Search';
 import SearchResult from '../components/SearchResult';
 import DataDetail from '../components/DataDetail';
-import mockData from '../mock';
 
-
-function AddData() {
+function AddData({ foodDb }) {
   const [selectedItem, setSelectedItem] = useState({});
   const [searchResult, setSearchResult] = useState([]);
   const [showList, setShowList] = useState(true);
@@ -16,6 +14,7 @@ function AddData() {
     setSelectedItem(item);
   };
 
+
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white relative">
       <Link to="/">
@@ -24,7 +23,7 @@ function AddData() {
         </button>
       </Link>
       <Search
-        database={mockData}
+        database={foodDb}
         searchResult={searchResult}
         setSearchResult={setSearchResult}
         setShowList={setShowList}

@@ -100,6 +100,16 @@ const storage = {
       imageUrl:
         "https://www.caffeineinformer.com/wp-content/caffeine/monster.jpg",
     },
+
+    {
+      id: 12,
+      name: "Red Bull Sugarfree",
+      unit: "ml",
+      baseAmount: 250,
+      caffeine: 80,
+      imageUrl:
+        "https://www.caffeineinformer.com/wp-content/caffeine/sugar-free-red-bull.jpg",
+    },
   ],
 };
 

@@ -1,11 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { getLog } from "../ApiService"
+import { getLog, deleteLog, editLog } from "../ApiService"
 import { useState, useEffect } from "react";
 
 function EditData() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [selectedLog, setSelectedLog] = useState({})
+  const [selectedLog, setSelectedLog] = useState({});
   const [editedLog, setEditedLog] = useState({ ...selectedLog })
   const caffeineRatio = selectedLog.caffeine / selectedLog.baseAmount;
 
@@ -13,9 +13,42 @@ function EditData() {
     getLog(id).then((res) => setSelectedLog(res))
   }, [])
 
-
   function handleDelete() {
-    // postLog(updatedLog);
+    deleteLog(id);
+    navigate("/log");
+  }
+
+  function handleChange(e) {
+    if (e.target.name === "baseAmount") {
+      const caffeineValue = Math.round(caffeineRatio * e.target.value);
+      setEditedLog({
+        ...editedLog,
+        baseAmount: e.target.value,
+        caffeine: caffeineValue,
+      });
+    } else {
+      setEditedLog({
+        ...editedLog,
+        [e.target.name]: e.target.value,
+      });
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const updatedLog = {
+      ...editedLog,
+      name: e.target.name.value,
+      baseAmount: e.target.baseAmount.value,
+      caffeine: e.target.caffeine.value,
+      timestamp: e.target.timestamp.value,
+    };
+    setEditedLog(updatedLog);
+    handleEdit(updatedLog);
+  }
+
+  function handleEdit(updatedLog) {
+    editLog(id, updatedLog)
     navigate("/log");
   }
 
@@ -28,7 +61,8 @@ function EditData() {
       <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white relative">
         <h1 className="text-2xl font-bold my-6">EDIT DATA</h1>
         <form
-          className="flex flex-col items-center" /*onSubmit={handleSubmit}*/
+          className="flex flex-col items-center"
+          onSubmit={handleSubmit}
         >
           <div className="flex">
             <label
@@ -44,7 +78,7 @@ function EditData() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               defaultValue={selectedLog.name}
               value={editedLog.name}
-              // onChange={handleChange}
+              onChange={handleChange}
               required
             />
           </div>
@@ -63,7 +97,7 @@ function EditData() {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               defaultValue={selectedLog.baseAmount}
               value={editedLog.baseAmount}
-              // onChange={handleChange}
+              onChange={handleChange}
               required
             />
             ml
@@ -100,19 +134,22 @@ function EditData() {
               name="timestamp"
               defaultValue={formattedTimestamp}
               value={editedLog.timestamp}
-              // onChange={handleChange}
+              onChange={handleChange}
               required
             />
           </div>
           <div className="flex">
             <button
-              type="submit"
+              type="button"
+              value="delete"
               className="text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mt-10 mr-8"
+              onClick={handleDelete}
             >
               DELETE
             </button>
             <button
               type="submit"
+              value="save"
               className="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mt-10"
             >
               SAVE CHANGE
