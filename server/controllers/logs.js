@@ -10,6 +10,17 @@ exports.getLogs = async ctx => {
   }
 }
 
+exports.getLog = async (ctx) => {
+  try {
+    const { id } = ctx.params
+    ctx.status = 200;
+    ctx.body = await logs.findById(id);
+  } catch (e) {
+    ctx.status = 500;
+    console.log("Internal Server Error", e);
+  }
+};
+
 exports.postLog = async ctx => {
   try {
     ctx.status = 201;
@@ -19,3 +30,14 @@ exports.postLog = async ctx => {
     console.log("Internal Server Error", e);
   }
 }
+
+exports.deleteLog = async (ctx) => {
+  try {
+    const { id } = ctx.params;
+    ctx.status = 200;
+    // ctx.body = await logs.create(ctx.request.body);
+  } catch (e) {
+    ctx.status = 500;
+    console.log("Internal Server Error", e);
+  }
+};

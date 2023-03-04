@@ -5,6 +5,7 @@ import { getLogs } from "../src/ApiService"
 import Log from './pages/Log';
 import Daily from './pages/Daily';
 import AddData from './pages/AddData';
+import EditData from './pages/EditData';
 
 function App() {
   const location = useLocation();
@@ -37,13 +38,14 @@ function App() {
     });
   }, [logs]);
 
-    if (location.pathname === '/add') {
+    if (location.pathname === '/add' || location.pathname.includes('edit')) {
     return (
       <div className="App relative">
         <Routes>
-          <Route path="/log" element={<Log logs={logs} setLogs={setLogs} />} />
+          <Route path="/log" element={<Log logs={logs} />} />
           <Route path="/" element={<Daily todaySum={todaySum} />} />
           <Route path="/add" element={<AddData />} />
+          <Route path="/log/edit/:id" element={<EditData />} />
         </Routes>
       </div>
     );
@@ -51,9 +53,10 @@ function App() {
   return (
     <div className="App relative">
       <Routes>
-        <Route path="/log" element={<Log logs={logs} setLogs={setLogs} />} />
+        <Route path="/log" element={<Log logs={logs} />} />
         <Route path="/" element={<Daily todaySum={todaySum} />} />
         <Route path="/add" element={<AddData />} />
+        <Route path="/log/edit/:id" element={<EditData />} />
       </Routes>
       <Link to="/add">
         <button className="absolute bottom-16 right-4 min-w-auto w-14 h-14 bg-green-500 p-2 rounded-full hover:bg-green-700 text-white font-semibold">

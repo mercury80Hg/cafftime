@@ -5,9 +5,7 @@ import { postLog } from '../ApiService';
 
 function DataDetail({ selectedItem, showDetail }) {
   const navigate = useNavigate();
-
   const [newLog, setNewLog] = useState({ ...selectedItem });
-
   const caffeineRatio = selectedItem.caffeine / selectedItem.baseAmount;
 
   function handleChange(e) {
@@ -53,7 +51,7 @@ function handlePost(updatedLog) {
         <div className="flex">
           <label
             htmlFor="name"
-            className="mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="mb-2 text-sm font-medium text-gray-900"
           >
             name
           </label>

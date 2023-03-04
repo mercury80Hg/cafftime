@@ -7,6 +7,13 @@ export const getLogs = async () => {
   return response;
 };
 
+export const getLog = async (id) => {
+  const response = await fetch(URL + "/log/edit/" + id)
+    .then((res) => res.json())
+
+  return response;
+};
+
 export const postLog = async (newLog) => {
   const response = await fetch(URL + "/add", {
     method: "POST",

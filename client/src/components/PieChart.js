@@ -16,11 +16,11 @@ function PieChart({ todaySum }) {
     ],
   };
 
-   const options = {
-     animation: false,
-   };
+  //  const options = {
+  //    animation: false,
+  //  };
   
-  return <Doughnut data={data} options={options} />;
+  return <Doughnut data={data} /*options={options}*/ />;
 }
 
 export default PieChart;

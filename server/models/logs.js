@@ -6,7 +6,7 @@ const logSchema = new Schema({
   name: String,
   baseAmount: Number,
   caffeine: Number,
-  timestamp: Date
+  timestamp: Date,
 });
 
 const Log = mongoose.model("log", logSchema);
