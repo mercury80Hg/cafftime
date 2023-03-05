@@ -17,7 +17,7 @@ function Navbar() {
           <span>Log</span>
         </Link>
         <div className="invisible w-1/3 h-16 align-middle flex items-center justify-center hover:bg-amber-900 active:bg-amber-900">
-          <span>MyPage</span>
+          <span>Setting</span>
         </div>
       </div>
     </nav>

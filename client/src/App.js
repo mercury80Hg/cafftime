@@ -11,7 +11,7 @@ import EditData from './pages/EditData';
 function App() {
   const location = useLocation();
   const [logs, setLogs] = useState([]);
-  const [todaySum, setTodaySum] = useState(null);
+  const [todaySum, setTodaySum] = useState(0);
   const [foodDb, setFoodDb] = useState([]);
 
   useEffect(() => {
@@ -39,10 +39,14 @@ function App() {
       );
 
       setLogs(groupedLogsArray);
-      setTodaySum(groupedLogsArray[0].logs.reduce((acc, log) => {
-        acc = acc + log.caffeine;
-        return acc;
-      }, 0))
+      if (groupedLogsArray[0].date === new Date().toDateString()) {
+        setTodaySum(
+          groupedLogsArray[0].logs.reduce((acc, log) => {
+            acc = acc + log.caffeine;
+            return acc;
+          }, 0)
+        );
+      }
     });
   }, [logs]);
 
@@ -62,7 +66,7 @@ function App() {
     <div className="App relative">
       <Routes>
         <Route path="/log" element={<Log logs={logs} />} />
-        <Route path="/" element={<Daily todaySum={todaySum} />} />
+        <Route path="/" element={<Daily todaySum={todaySum} logs={logs}/>} />
         <Route path="/add" element={<AddData />} />
         <Route path="/log/edit/:id" element={<EditData />} />
       </Routes>
