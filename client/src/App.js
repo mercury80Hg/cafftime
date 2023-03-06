@@ -10,10 +10,10 @@ import EditData from './pages/EditData';
 
 
 /* helper function to calculate remaining caffeine : this is for CaffSimulator, LineGraph on Daily page */
+
 function calculateRemaining(logs, selectedTime = Date.now()) {
   const halfLife = 5;
-  const flattenedLogs = logs.flatMap((log) => log.logs);
-  const remainingCaffeine = flattenedLogs.reduce((acc, item) => {
+  const remainingCaffeine = logs.reduce((acc, item) => {
     const timePassed =
       (new Date(selectedTime) - new Date(item.timestamp)) / (60 * 60 * 1000);
     const halfLivesPassed = timePassed / halfLife;
@@ -37,6 +37,7 @@ function setGraphTimeforTomorrow(hour) {
 function App() {
   const location = useLocation();
   const [logs, setLogs] = useState([]);
+  const [flattenedLogs, setFlattenedLogs] = useState([]);
   const [todaySum, setTodaySum] = useState(0);
   const [foodDb, setFoodDb] = useState([]);
   const [remaining, setRemaining] = useState(calculateRemaining(logs));
@@ -55,6 +56,7 @@ function App() {
     setGraphTimeforTomorrow(2),
     setGraphTimeforTomorrow(4)
   ];
+
 
   /* Get food DB */
   useEffect(() => {
@@ -83,6 +85,7 @@ function App() {
       );
 
       setLogs(groupedLogsArray);
+
       if (groupedLogsArray[0].date === new Date().toDateString()) {
         setTodaySum(
           groupedLogsArray[0].logs.reduce((acc, log) => {
@@ -93,9 +96,19 @@ function App() {
       }
     });
 
+    setFlattenedLogs(logs.flatMap((log) => log.logs));
+
+    function filterLogByTime(logs, time) {
+      const filteredLogByTime = logs.filter(
+        (log) => Date.parse(log.timestamp) < time
+      );
+
+      return filteredLogByTime;
+    }
+
     /* Calculate remaining caffeine in body using helper function*/
-    setRemaining(calculateRemaining(logs));
-    setRemainingByTime(times.map(time => calculateRemaining(logs, time)));
+    setRemaining(calculateRemaining(flattenedLogs));
+    setRemainingByTime(times.map(time => calculateRemaining(filterLogByTime(flattenedLogs, time), time))); // change the logic
   }, [logs]);
 
 
