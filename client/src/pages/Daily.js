@@ -3,7 +3,7 @@ import LineGraph from '../components/LineGraph';
 import PieChart from '../components/PieChart';
 
 
-function Daily({ todaySum, logs }) {
+function Daily({ todaySum, remaining, remainingByTime }) {
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
       <h1 className="text-2xl font-bold mt-8"> TODAY </h1>
@@ -18,8 +18,12 @@ function Daily({ todaySum, logs }) {
         </div>
       </div>
       <div className="block p-6 bg-gray-50 border border-gray-200 rounded-lg shadow m-2">
-        <CaffSimulator logs={logs}></CaffSimulator>
-        <LineGraph></LineGraph>
+        <CaffSimulator
+          remaining={remaining}
+        ></CaffSimulator>
+        <LineGraph
+          remainingByTime={remainingByTime}
+        ></LineGraph>
       </div>
       <div className="block p-6 bg-gray-50 border border-gray-200 rounded-lg shadow m-2">
         <p className="text-xs text-gray-500 text-left my-2">
@@ -27,8 +31,9 @@ function Daily({ todaySum, logs }) {
           amount not generally associated with negative effects.
         </p>
         <p className="text-xs text-gray-500 text-left my-2">
-          😴 The FDA suggests that one cup of coffee can keep you awake at bedtime, equivalent to 50mg present at bedtime. It depends on individual
-          factors like caffeine tolerance.
+          😴 The FDA suggests that one cup of coffee can keep you awake at
+          bedtime, equivalent to 50mg present at bedtime. It depends on
+          individual factors like caffeine tolerance.
         </p>
       </div>
     </div>
