@@ -4,16 +4,23 @@ import { CategoryScale } from "chart.js";
 import { Tooltip } from 'chart.js';
 import { Chart as ChartJS } from "chart.js/auto";
 import annotationPlugin from "chartjs-plugin-annotation";
+import { DateTime } from "luxon";
 
 ChartJS.register(annotationPlugin, CategoryScale, Tooltip);
 
-
-
-function LineGraph({ remainingByTime }) {
+function LineGraph({ remainingByTime, userSetting }) {
+  
+  const labels = [];
+  for (let i = 6; i <= 28; i++) {
+    const dt = DateTime.fromObject({
+      hour: i % 24,
+      zone: userSetting.timezone,
+    });
+    labels.push(dt.toFormat("ha"));
+  }
+  
   const data = {
-    labels: [
-      6, 8, 10, 12, 14, 16, 18, 20, 24, 2, 4
-    ],
+    labels: labels,
     datasets: [
       {
         type: "line",
@@ -27,25 +34,35 @@ function LineGraph({ remainingByTime }) {
   };
 
   const options = {
+    animation: false,
 
-  animation: false,
-  plugins: {
-    annotation: {
-      annotations: {
-        line1: {
-          type: "line",
-          yMin: 50,
-          yMax: 50,
-          borderColor: "rgb(255, 99, 132)",
-          borderWidth: 2,
-          borderDash: [10, 10],
-          drawTime: "beforeDatasetsDraw",
+    plugins: {
+      annotation: {
+        annotations: {
+          caffeineTreshold: {
+            type: "line",
+            yMin: userSetting.sleepTreshold,
+            yMax: userSetting.sleepTreshold,
+            borderColor: "rgb(255, 99, 132)",
+            borderWidth: 2,
+            borderDash: [10, 10],
+            drawTime: "beforeDatasetsDraw",
+          },
+          sleepTime: {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x",
+            value: labels.indexOf(userSetting.sleepTime),
+            borderColor: "#1E429F",
+            borderWidth: 2,
+            borderDash: [10, 10],
+            drawTime: "beforeDatasetsDraw",
+          },
         },
-        
       },
     },
-  },
   };
+
   
   return <Line type="line" data={data} options={options}/>;
 }

@@ -3,14 +3,13 @@ import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function PieChart({ todaySum }) {
-  const left = 400 - todaySum > 0 ? 400 - todaySum : 0;
-
+function PieChart({ todaySum , userSetting }) {
+  const left = userSetting.dailyLimit - todaySum > 0 ? userSetting.dailyLimit - todaySum : 0;
   let backgroundColor;
 
-  if (todaySum < 150) {
+  if (todaySum < userSetting.dailyLimit*0.4) {
     backgroundColor = ["#10b981", "#fcd34d"];
-  } else if (todaySum > 300) {
+  } else if (todaySum > userSetting.dailyLimit - userSetting.dailyLimit*0.25) {
     backgroundColor = ["#ef4444", "#fcd34d"];
   } else {
     backgroundColor = ["#f59e0b", "#fcd34d"];

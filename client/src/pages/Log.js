@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 function Log({ logs }) {
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
@@ -9,17 +10,18 @@ function Log({ logs }) {
             <div className="border-b-2 py-4" key={log.date}>
               <p className="text-2xl font-bold text-left">{log.date}</p>
               <p className="text-2xl font-bold text-left">
-                Total Caffeine {" "}
+                Total Caffeine{" "}
                 <span className="text-2xl font-bold text-red-500">
                   {log.logs.reduce((acc, log) => {
                     acc = acc + log.caffeine;
                     return acc;
-                  }, 0)}{" "}
+                  }, 0)}
+                  {" "}
                   mg{" "}
                 </span>
               </p>
               {log.logs.map((item) => {
-                const detailUrl = `/log/edit/${item._id}`
+                const detailUrl = `/log/edit/${item._id}`;
                 return (
                   <Link
                     to={detailUrl}

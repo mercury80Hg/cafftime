@@ -25,7 +25,6 @@ export const getLog = async (id) => {
   return response;
 };
 
-
 /* save log*/
 export const postLog = async (newLog) => {
   const response = await fetch(URL + "/add", {
