@@ -1,13 +1,10 @@
 
-function SearchResult({ searchResult, showList, setSelectedItem, setShowList, setShowDetail }) {
+function SearchResult({ searchResult, setSelectedItem }) {
 
   const handleClick = (result) => {
-    setShowList(false);
-    setShowDetail(true);
     setSelectedItem(result);
   };
 
-  if (showList) {
     return (
       <div>
           <ul className="results mx-10">
@@ -26,6 +23,6 @@ function SearchResult({ searchResult, showList, setSelectedItem, setShowList, se
       </div>
     );
   }
-}
+
 
 export default SearchResult;

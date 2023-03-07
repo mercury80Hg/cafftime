@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Setting({ userSetting, setUserSetting }) {
   const navigate = useNavigate();
   const [editedSetting, setEditedSetting] = useState({ ...userSetting });
-  
+
   function handleChange(e) {
     setEditedSetting({
       ...editedSetting,

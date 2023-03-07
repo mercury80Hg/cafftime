@@ -9,32 +9,8 @@ import Daily from './pages/Daily';
 import AddData from './pages/AddData';
 import EditData from './pages/EditData';
 import Setting from "./pages/Setting";
+import { calculateRemaining, setGraphTime, setGraphTimeforTomorrow } from './Utilities';
 
-
-/* helper function to calculate remaining caffeine : this is for CaffSimulator, LineGraph on Daily page */
-function calculateRemaining(logs, selectedTime = Date.now()) {
-  const halfLife = 5;
-  const remainingCaffeine = logs.reduce((acc, item) => {
-    const timePassed =
-      (new Date(selectedTime) - new Date(item.timestamp)) / (60 * 60 * 1000);
-    const halfLivesPassed = timePassed / halfLife;
-    acc += item.caffeine * Math.pow(0.5, halfLivesPassed);
-    return acc;
-  }, 0);
-  return remainingCaffeine;
-}
-
-/* helper function to set time for line graph*/
-function setGraphTime(hour) {
-  return new Date().setHours(hour, 0, 0, 0);
-}
-
-function setGraphTimeforTomorrow(hour) {
-  const now = new Date();
-  return new Date(now.setDate(now.getDate() + 1)).setHours(hour, 0, 0, 0);
-}
-
-/* App */
 function App() {
   const location = useLocation();
   const [logs, setLogs] = useState([]);
@@ -109,7 +85,7 @@ function App() {
       return filteredLogByTime;
     }
 
-    /* Helper to convert bedtime string to time*/
+    /* convert bedtime string(from userSetting) to real time format*/
     const now = DateTime.local();
     const tomorrow = DateTime.local().plus({ days: 1 });
     const parsedTime = DateTime.fromFormat(userSetting.sleepTime, "ha");

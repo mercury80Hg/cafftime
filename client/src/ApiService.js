@@ -1,6 +1,6 @@
 const URL = "http://localhost:4000";
 
-/* get food db*/
+/* api service for food DB*/
 export const getDatabase = async () => {
   const response = await fetch(URL + "/db")
     .then((res) => res.json())
@@ -8,7 +8,7 @@ export const getDatabase = async () => {
   return response;
 }
 
-/* get user log db*/
+/* api service for log DB*/
 export const getLogs = async () => {
   const response = await fetch(URL + "/log")
     .then((res) => res.json())
@@ -17,7 +17,6 @@ export const getLogs = async () => {
   return response;
 };
 
-/* get log detail*/
 export const getLog = async (id) => {
   const response = await fetch(URL + "/log/edit/" + id)
     .then((res) => res.json())
@@ -25,7 +24,6 @@ export const getLog = async (id) => {
   return response;
 };
 
-/* save log*/
 export const postLog = async (newLog) => {
   const response = await fetch(URL + "/add", {
     method: "POST",
@@ -36,8 +34,6 @@ export const postLog = async (newLog) => {
   return response.json();
 };
 
-
-/* delete log*/
 export const deleteLog = async (id) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "DELETE"
@@ -46,7 +42,6 @@ export const deleteLog = async (id) => {
   return response;
 };
 
-/* edit log*/
 export const editLog = async (id, editedLog) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "PUT",

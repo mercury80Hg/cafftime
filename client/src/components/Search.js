@@ -1,28 +1,29 @@
 import { useState, useEffect } from "react";
 
-function Search({ database, searchResult, setSearchResult, setShowList, setShowDetail }) {
+function Search({ database, searchResult, setSearchResult, /*setShowList, setShowDetail*/ }) {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   useEffect(() => {
-    const filteredResult = searchKeyword.length > 0 ?
-      database.filter((item) => {
-      return item.name.toLowerCase().includes(searchKeyword);
-    }) : [];
+    const filteredResult =
+      searchKeyword.length > 0
+        ? database.filter((item) => {
+            return item.name.toLowerCase().includes(searchKeyword);
+          })
+        : [];
 
     const uniqueResults = filteredResult.filter((result) => {
       return !searchResult.some(
         (existingResult) => existingResult.id === result.id
       );
     });
-
     setSearchResult(uniqueResults);
   }, [searchKeyword]);
 
   function handleChange(e) {
     const keyword = e.target.value.toLowerCase();
     setSearchKeyword(keyword);
-    setShowList(true);
-    setShowDetail(false);
+    // setShowList(true);
+    // setShowDetail(false);
   }
 
 

@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { CategoryScale } from "chart.js";
 import { Tooltip } from 'chart.js';
 import { Chart as ChartJS } from "chart.js/auto";
 import annotationPlugin from "chartjs-plugin-annotation";
 import { DateTime } from "luxon";
 
-ChartJS.register(annotationPlugin, CategoryScale, Tooltip);
+ChartJS.register(annotationPlugin, Tooltip);
 
 function LineGraph({ remainingByTime, userSetting }) {
-  
   const labels = [];
   for (let i = 6; i <= 28; i++) {
     const dt = DateTime.fromObject({
@@ -18,7 +15,7 @@ function LineGraph({ remainingByTime, userSetting }) {
     });
     labels.push(dt.toFormat("ha"));
   }
-  
+
   const data = {
     labels: labels,
     datasets: [
@@ -28,7 +25,7 @@ function LineGraph({ remainingByTime, userSetting }) {
         borderColor: "#92400e",
         backgroundColor: "transparent",
         borderWidth: 1,
-        data: remainingByTime, // change this according to calculator
+        data: remainingByTime,
       },
     ],
   };

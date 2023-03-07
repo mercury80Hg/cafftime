@@ -7,8 +7,6 @@ import DataDetail from '../components/DataDetail';
 function AddData({ foodDb }) {
   const [selectedItem, setSelectedItem] = useState({});
   const [searchResult, setSearchResult] = useState([]);
-  const [showList, setShowList] = useState(true);
-  const [showDetail, setShowDetail] = useState(true);
 
   const handleSelectedItemChange = (item) => {
     setSelectedItem(item);
@@ -26,18 +24,17 @@ function AddData({ foodDb }) {
         database={foodDb}
         searchResult={searchResult}
         setSearchResult={setSearchResult}
-        setShowList={setShowList}
-        setShowDetail={setShowDetail} />
-      <SearchResult
-        searchResult={searchResult}
-        showList={showList}
-        setSelectedItem={handleSelectedItemChange}
-        setShowList={setShowList}
-        setShowDetail={setShowDetail}
-       />
+      />
+      {(searchResult.length > 0 && !selectedItem._id)&&
+        <SearchResult
+          searchResult={searchResult}
+          setSelectedItem={handleSelectedItemChange}
+
+        />
+      }
       <DataDetail
         selectedItem={selectedItem}
-        showDetail={showDetail} />
+      />
     </div>
   );
 }

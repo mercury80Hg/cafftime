@@ -5,7 +5,6 @@ const bodyParser = require('koa-bodyparser');
 const router = require('./router');
 const PORT = 4000;
 
-app.keys = ["your-session-secret"];
 app.use(cors());
 app.use(bodyParser());
 app.use(router.routes());

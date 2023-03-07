@@ -1,7 +1,4 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 function PieChart({ todaySum , userSetting }) {
   const left = userSetting.dailyLimit - todaySum > 0 ? userSetting.dailyLimit - todaySum : 0;
