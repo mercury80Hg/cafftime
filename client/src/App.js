@@ -108,7 +108,7 @@ function App() {
     setRemaining(calculateRemaining(flattenedLogs));
     setRemainingByTime(times.map(time => calculateRemaining(filterLogByTime(flattenedLogs, time), time)));
     setRemainingatBedTime(calculateRemaining(flattenedLogs, sleepTime));
-  }, [logs]);
+  }, [logs]); //logs
 
 
 
