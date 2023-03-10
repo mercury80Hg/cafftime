@@ -1,0 +1,131 @@
+name,baseAmount,caffeine,imageUrl
+Americano,354,154,https://www.caffeineinformer.com/wp-content/caffeine/caffe-americano.jpg
+Bulletproof Coffee,236,145,https://www.caffeineinformer.com/wp-content/caffeine/bulletproof-coffee.jpg
+Caffe Mocha,354,152,https://www.caffeineinformer.com/wp-content/caffeine/cafe-mocha.jpg
+Cappuchino,354,154,https://www.caffeineinformer.com/wp-content/caffeine/cappuccino.jpg
+Brewed Coffee,236,163,https://www.caffeineinformer.com/wp-content/caffeine/coffee-brewed.jpg
+Decaf Instant Coffee,236,2.4,https://www.caffeineinformer.com/wp-content/caffeine/coffee-decaf-instant.jpg
+Instant Coffee,236,57,https://www.caffeineinformer.com/wp-content/caffeine/coffee-instant.jpg
+Decaf Coffee,236,5.6,https://www.caffeineinformer.com/wp-content/caffeine/coffee-decaf-brewed.jpg
+Espresso Monster,248,160,https://www.caffeineinformer.com/wp-content/caffeine/espresso-monster.jpg
+Espresso (One Shot),44,77,https://www.caffeineinformer.com/wp-content/caffeine/espresso.jpg
+Flat White,354,130,https://www.caffeineinformer.com/wp-content/caffeine/flat-white-coffee.jpg
+Long Black,177,154,https://www.caffeineinformer.com/wp-content/caffeine/long-black-espresso.jpg
+Maxwell House Coffee,236,112,https://www.caffeineinformer.com/wp-content/caffeine/maxwell-house.jpg
+Latte,473,154,https://www.caffeineinformer.com/wp-content/caffeine/latte.jpg
+McDonalds Coffee (Black),473,145,https://www.caffeineinformer.com/wp-content/caffeine/mcdonalds-large-coffee.jpg
+McDonalds (McCafe) Latte,473,142,https://www.caffeineinformer.com/wp-content/caffeine/mcdonalds-latte.jpg
+McDonalds (McCafe) Mocha,473,167,https://www.caffeineinformer.com/wp-content/caffeine/mcdonalds-mocha.jpg
+McDonalds Iced Coffee,340,133,https://www.caffeineinformer.com/wp-content/caffeine/mcdonalds-iced-coffee.jpg
+Nescafe 3 in 1 Instant Coffee,177,50,https://www.caffeineinformer.com/wp-content/caffeine/nestle-3-1.jpg
+Nescafe Dolce Gusto,236,106,https://www.caffeineinformer.com/wp-content/caffeine/nescafe-dolce-gusto.jpg
+Nescafe Gold,250,66,https://www.caffeineinformer.com/wp-content/caffeine/nescafe-gold-instant-coffee.jpg
+Nespresso Coffee Capsule (One Capsule),39,60,https://www.caffeineinformer.com/wp-content/caffeine/nespresso-coffee-capsules.jpg
+Starbucks Caramel Macchiato,473,150,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-grande-latte-macchiato.jpg
+Starbucks Cold Brew Coffee,473,205,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-cold-brew.jpg
+Starbucks Decaf Coffee,473,25,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-tall-decaf-coffee.jpg
+Starbucks Americano Grande,473,225,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-grande-caffe-americano.jpg
+Starbucks Latte Grande,473,150,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-grande-caffe-latte.jpg
+Starbucks Caffe Mocha Grande,473,175,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-grande-caffe-mocha.jpg
+Starbucks Cappuchino Grande,473,150,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-grande-cappuccino.jpg
+Starbucks Grande Coffee,473,310,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-grande-coffee.jpg
+Starbucks Iced Americano,473,225,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-iced-espresso.jpg
+Starbucks Nitro Cold Brew Coffee,473,280,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-nitro-cold-brew.jpg
+Starbucks Pumpkin Cream Cold Brew,473,185,https://www.caffeineinformer.com/wp-content/caffeine/starbucks-pumpkin-cream.jpg
+Arizona Iced Tea,473,30,https://www.caffeineinformer.com/wp-content/caffeine/arizona-iced-tea.jpg
+Crystal Light Iced Tea,236,10,https://www.caffeineinformer.com/wp-content/caffeine/crystal-light-iced-tea.jpg
+Cold Brew Tea,236,70,https://www.caffeineinformer.com/wp-content/caffeine/cold-brew-tea.jpg
+Dunkin' Donuts Iced Tea,709,63,https://www.caffeineinformer.com/wp-content/caffeine/dunkin-iced-tea.jpg
+Kombucha Tea,236,24,https://www.caffeineinformer.com/wp-content/caffeine/kombucha-tea.jpg
+Lipton Iced Tea,591,25,https://www.caffeineinformer.com/wp-content/caffeine/lipton-iced-tea.jpg
+Matcha Tea (Powder),236,64,https://www.caffeineinformer.com/wp-content/caffeine/matcha-green-tea.jpg
+Nestea Iced Tea,500,23,https://www.caffeineinformer.com/wp-content/caffeine/nestea-iced-tea.jpg
+PG Tips Black Tea,200,50,https://www.caffeineinformer.com/wp-content/caffeine/pg-tips-tea.jpg
+Black Tea,236,42,https://www.caffeineinformer.com/wp-content/caffeine/tea-brewed.jpg
+Decaf Tea,236,4,https://www.caffeineinformer.com/wp-content/caffeine/decaffeinated-tea.jpg
+Green Tea,236,18,https://www.caffeineinformer.com/wp-content/caffeine/green-tea.jpg
+Iced Tea,236,47,https://www.caffeineinformer.com/wp-content/caffeine/tea-iced.jpg
+Jasmine Tea,236,25,https://www.caffeineinformer.com/wp-content/caffeine/jasmine-tea.jpg
+Oolong Tea,236,37,https://www.caffeineinformer.com/wp-content/caffeine/oolong-tea.jpg
+7-Up (Seven Up),354,0,https://www.caffeineinformer.com/wp-content/caffeine/7-up.jpg
+Coca-Cola Caffeine Free,354,0,https://www.caffeineinformer.com/wp-content/caffeine/coca-cola-free.jpg
+Coca-Cola Cherry (Cherry Coke),354,34,https://www.caffeineinformer.com/wp-content/caffeine/cherry-coke.jpg
+Cherry Coke Zero (Coca-Cola Cherry Zero),354,34,https://www.caffeineinformer.com/wp-content/caffeine/coke-zero-cherry.jpg
+Coca-Cola Classic,354,34,https://www.caffeineinformer.com/wp-content/caffeine/coca-cola-classic.jpg
+Coca-Cola Vanilla (Vanilla Coke),354,34,https://www.caffeineinformer.com/wp-content/caffeine/vanilla-coke.jpg
+Cherry Coke Zero (Coca-Cola Cherry Zero),354,34,https://www.caffeineinformer.com/wp-content/caffeine/coke-zero-vanilla.jpg
+Coke Zero Sugar (Coca-Cola Zero),354,34,https://www.caffeineinformer.com/wp-content/caffeine/coke-zero.jpg
+Coca-Cola Cherry Vanilla (Cherry Vanilla Coke),354,34,https://www.caffeineinformer.com/wp-content/caffeine/coca-cola-cherry-vanilla.jpg
+Diet Coke,354,46,https://www.caffeineinformer.com/wp-content/caffeine/diet-coke.jpg
+Diet Dr Pepper,354,41,https://www.caffeineinformer.com/wp-content/caffeine/diet-dr-pepper.jpg
+Diett Mountatin Dew,354,54,https://www.caffeineinformer.com/wp-content/caffeine/diet-mountain-dew.jpg
+Diet Pepsi,354,35,https://www.caffeineinformer.com/wp-content/caffeine/diet-pepsi-cola.jpg
+Diet Pepsi Wild Cherry,354,38,https://www.caffeineinformer.com/wp-content/caffeine/diet-pepsi-wild-cherry.jpg
+Pepsi Wild Cherry,354,38,https://www.caffeineinformer.com/wp-content/caffeine/pepsi-wild-cherry.jpg
+Tropicana Twister Soda,591,0,https://www.caffeineinformer.com/wp-content/caffeine/tropicana-twister.jpg
+Sunkist Orange Soda,354,19,https://www.caffeineinformer.com/wp-content/caffeine/sunkist-orange-soda.jpg
+Sprite,354,0,https://www.caffeineinformer.com/wp-content/caffeine/sprite.jpg
+Pepsi Zero Sugar,354,69,https://www.caffeineinformer.com/wp-content/caffeine/pepsi-max.jpg
+Pepsi Max,330,42.6,https://www.caffeineinformer.com/wp-content/caffeine/uk-pepsi-max.jpg
+Pepsi,354,38,https://www.caffeineinformer.com/wp-content/caffeine/pepsi-cola.jpg
+Mountain Dew Zero Sugar,354,68,https://www.caffeineinformer.com/wp-content/caffeine/mountain-dew-zero-sugar.jpg
+Mountain Dew,354,54,https://www.caffeineinformer.com/wp-content/caffeine/mountain-dew.jpg
+Fanta,354,0,https://www.caffeineinformer.com/wp-content/caffeine/fanta-soft-drinks.jpg
+Dr Pepper,354,42,https://www.caffeineinformer.com/wp-content/caffeine/dr-pepper.jpg
+VitaminWater Energy,591,50,https://www.caffeineinformer.com/wp-content/caffeine/glaceau-vitaminwater.jpg
+Tonic Water,295,0,https://www.caffeineinformer.com/wp-content/caffeine/tonic-water.jpg
+Blue Bolt,250,80,https://www.caffeineinformer.com/wp-content/caffeine/blue-bolt-energy-drink.jpg
+Blue Charge,250,80,https://www.caffeineinformer.com/wp-content/caffeine/asda-blue-charge.jpg
+Blue Spark,250,75,https://www.caffeineinformer.com/wp-content/caffeine/tesco-blue-spark.jpg
+Boost Energy,250,80,https://www.caffeineinformer.com/wp-content/caffeine/boost-energy-drink.jpg
+Carabao Energy Drink,330,106,https://www.caffeineinformer.com/wp-content/caffeine/carabao.jpg
+Celsius Energy Drink,354,200,https://www.caffeineinformer.com/wp-content/caffeine/celsius-energy-drink.jpg
+Coca-Cola Energy,354,114,https://www.caffeineinformer.com/wp-content/caffeine/coke-energy-drink.jpg
+Euro Shopper Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/euroshopper-energy-drink.jpg
+Crave Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/crave-energy-drink-mix.jpg
+Hype Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/hype-energy-drinks.jpg
+Hell Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/hell-energy-drink.jpg
+Guru Energy Drink,354,140,https://www.caffeineinformer.com/wp-content/caffeine/guru.jpg
+Go Fast Energy Drink,473,160,https://www.caffeineinformer.com/wp-content/caffeine/go-fast-energy-drink.jpg
+Full Throttle Energy Drink,473,160,https://www.caffeineinformer.com/wp-content/caffeine/full-throttle-energy-drink.jpg
+Irn Bru,330,30,https://www.caffeineinformer.com/wp-content/caffeine/irn-bru-32-energy-drink.jpg
+Java Monster,443,200,https://www.caffeineinformer.com/wp-content/caffeine/java-monster.jpg
+Java Monster 300,443,300,https://www.caffeineinformer.com/wp-content/caffeine/java-monster-triple-shot.jpg
+Joker Mad Energy,473,160,https://www.caffeineinformer.com/wp-content/caffeine/joker-energy-drink.jpg
+Juice Monster,473,160,https://www.caffeineinformer.com/wp-content/caffeine/juice-monster.jpg
+Liquid Ice Energy Drink,245,80,https://www.caffeineinformer.com/wp-content/caffeine/liquid-ice-energy-drink.jpg
+Live Energy Drink,500,150,https://www.caffeineinformer.com/wp-content/caffeine/lift-plus-energy-drink.jpg
+Lucozade,380,46,https://www.caffeineinformer.com/wp-content/caffeine/lucozade.jpg
+Loud Energy Drink,473,320,https://www.caffeineinformer.com/wp-content/caffeine/loud-energy-drink.jpg
+Mega Monster Energy Drink,709,240,https://www.caffeineinformer.com/wp-content/caffeine/mega-monster-energy-drink.jpg
+Monster Assault,473,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-assault-energy-drink.jpg
+Monster Dragon Tea,680,60,https://www.caffeineinformer.com/wp-content/caffeine/monster-dragon-tea.jpg
+Monster Energy,473,160,https://www.caffeineinformer.com/wp-content/caffeine/monster.jpg
+Monster Hydro,751,188,https://www.caffeineinformer.com/wp-content/caffeine/monster-hydro.jpg
+Monster Import,550,179,https://www.caffeineinformer.com/wp-content/caffeine/monster-import.jpg
+Monster Lo-Carb,473,140,https://www.caffeineinformer.com/wp-content/caffeine/monster-lo-carb-uk.jpg
+Monster Mango Loco,473,152,https://www.caffeineinformer.com/wp-content/caffeine/monster-juiced-mango-loco.jpg
+Monster Mule,473,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-mule.jpg
+Monster Nitro,473,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-nitro.jpg
+Monster Pipeline Punch,473,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-pipeline.jpg
+Monster Rehab,458,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-rehab-energy-drink.jpg
+Monster Reserve,473,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-reserve.jpg
+Monster Ripper Energy Juice,500,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-ripper.jpg
+Monster The Doctor VR46,500,160,https://www.caffeineinformer.com/wp-content/caffeine/monster-doctor.jpg
+Monster Ultra,473,150,https://www.caffeineinformer.com/wp-content/caffeine/monster-ultra-blue.jpg
+Monster Zero Sugar,473,140,https://www.caffeineinformer.com/wp-content/caffeine/monster-absolutely-zero-energy-drink.jpg
+Mountain Dew Amp,473,142,https://www.caffeineinformer.com/wp-content/caffeine/amp-energy-drink.jpg
+NOCCO Energy Drink,330,180,https://www.caffeineinformer.com/wp-content/caffeine/nocco.jpg
+Pure Cofain 699,250,175,https://www.caffeineinformer.com/wp-content/caffeine/pure-coffein.jpg
+Red Bull,250,80,https://www.caffeineinformer.com/wp-content/caffeine/red-bull.jpg
+Red Bull Sugarfree,250,80,https://www.caffeineinformer.com/wp-content/caffeine/sugar-free-red-bull.jpg
+Red Bull Zero,250,80,https://www.caffeineinformer.com/wp-content/caffeine/red-bull-total-zero.jpg
+Red Devil Energy Drink,473,160,https://www.caffeineinformer.com/wp-content/caffeine/red-devil-energy-drink.jpg
+Red Eye Energy Drink,328,106,https://www.caffeineinformer.com/wp-content/caffeine/red-eye-energy-drink.jpg
+Rockstar Energy Drink,473,160,https://www.caffeineinformer.com/wp-content/caffeine/rockstar.jpg
+Source 1899,250,80,https://www.caffeineinformer.com/wp-content/caffeine/source-energy-drink.jpg
+TENZING Natural Energy,250,80,https://www.caffeineinformer.com/wp-content/caffeine/tenzing.jpg
+Tiger Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/tiger-energy-drink.jpg
+V Energy Drink,250,78,https://www.caffeineinformer.com/wp-content/caffeine/v.jpg
+Wildcat Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/wildcat-energy-drink.jpg
+XL Energy Drink,250,80,https://www.caffeineinformer.com/wp-content/caffeine/xl-energy-drink.jpg
