@@ -11,5 +11,6 @@ const logSchema = new Schema({
 
 const Log = mongoose.model("log", logSchema);
 
+export {}
 module.exports = Log;
 
