@@ -28,7 +28,7 @@ function App() {
   });
 
   /* set time for line graph*/
-  const times;
+  const times: []=[];
   for (let i = 6; i <= 24; i++) {
     times.push(setGraphTime(i));
   }
@@ -50,7 +50,7 @@ function App() {
   /* Get user logs grouped by date*/
   useEffect(() => {
     getLogs().then((res) => {
-      const groupedLogs = res.reduce((acc, log) => {
+      const groupedLogs = res.reduce((acc: number, log: { timestamp: string | number | Date; }) => {
         const date = new Date(log.timestamp).toDateString();
         if (acc[date]) {
           acc[date].push(log);
