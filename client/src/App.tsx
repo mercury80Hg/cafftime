@@ -28,19 +28,21 @@ function App() {
   });
 
   /* set time for line graph*/
-  const times = [];
+  const times;
   for (let i = 6; i <= 24; i++) {
     times.push(setGraphTime(i));
   }
+  console.log(times, "TIMES");
+  
 
    for (let i = 1; i <= 4; i++) {
      times.push(setGraphTimeforTomorrow(i));
-   }
+   } 
 
 
   /* Get food DB */
   useEffect(() => {
-    getDatabase().then((res) => {
+    getDatabase().then((res) => { 
       setFoodDb(res);
     });
   }, []);

@@ -11,5 +11,5 @@ router.post('/add', logs.postLog);
 
 router.get('/db', food.getDataBase);
 
-
+export {}
 module.exports = router;
