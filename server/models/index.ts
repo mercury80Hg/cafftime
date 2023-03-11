@@ -8,6 +8,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log(`DB Connected to : ${dbName}`))
-  .catch((e) => console.log("connection failed", e));
+  .catch((e: string ) => console.log("connection failed", e));
 
+  export {}
 module.exports = mongoose;
