@@ -1,6 +1,8 @@
+import { Context } from 'koa';
+
 const food = require("../models/food");
 
-exports.getDataBase = async (ctx) => {
+exports.getDataBase = async (ctx: Context) => {
   try {
     ctx.status = 200;
     ctx.body = await food.find();
