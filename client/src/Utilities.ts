@@ -1,6 +1,14 @@
 /* Helper functions to draw pie chart and line graph*/
 
-export function calculateRemaining(logs: [], selectedTime: number = Date.now()) {
+interface SchemaData {
+  id?: String,
+  name?: String,
+  baseAmount?: Number,
+  caffeine?: Number, 
+  timestamp:Date,
+}
+
+export function calculateRemaining(logs: SchemaData[], selectedTime: number = Date.now()) {
   const halfLife = 5;
   const remainingCaffeine = logs.reduce((acc:number, item: any) => {
     const timePassed = Number(new Date(selectedTime)) - Number(new Date(item.timestamp)) / (60 * 60 * 1000);

@@ -8,23 +8,31 @@ export const getDatabase = async () => {
   return response;
 }
 
+interface SchemaData {
+  id?: String,
+  name?: String,
+  baseAmount?: Number,
+  caffeine?: Number, 
+  timestamp:Date,
+}
+
 /* api service for log DB*/
 export const getLogs = async () => {
   const response = await fetch(URL + "/log")
     .then((res) => res.json())
-    .then((data) => data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)));
+    .then((data) => data.sort((a: SchemaData, b: SchemaData) => Number(new Date(b.timestamp)) - Number(new Date(a.timestamp))));
 
   return response;
 };
 
-export const getLog = async (id) => {
+export const getLog = async (id: string) => {
   const response = await fetch(URL + "/log/edit/" + id)
     .then((res) => res.json())
 
   return response;
 };
 
-export const postLog = async (newLog) => {
+export const postLog = async (newLog: SchemaData) => {
   const response = await fetch(URL + "/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -34,7 +42,7 @@ export const postLog = async (newLog) => {
   return response.json();
 };
 
-export const deleteLog = async (id) => {
+export const deleteLog = async (id: string) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "DELETE"
   })
@@ -42,7 +50,7 @@ export const deleteLog = async (id) => {
   return response;
 };
 
-export const editLog = async (id, editedLog) => {
+export const editLog = async (id:string, editedLog: SchemaData) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

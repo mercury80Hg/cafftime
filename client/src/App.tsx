@@ -27,8 +27,17 @@ function App() {
     sleepTime: "10PM"
   });
 
+
+  interface SchemaData {
+    id?: String,
+    name?: String,
+    baseAmount?: Number,
+    caffeine?: Number, 
+    timestamp:Date,
+  }
+
   /* set time for line graph*/
-  const times: []=[];
+  const times: Number[]=[];
   for (let i = 6; i <= 24; i++) {
     times.push(setGraphTime(i));
   }
@@ -50,7 +59,7 @@ function App() {
   /* Get user logs grouped by date*/
   useEffect(() => {
     getLogs().then((res) => {
-      const groupedLogs = res.reduce((acc: number, log: { timestamp: string | number | Date; }) => {
+      const groupedLogs = res.reduce((acc: Number, log: SchemaData) => {
         const date = new Date(log.timestamp).toDateString();
         if (acc[date]) {
           acc[date].push(log);
@@ -61,7 +70,7 @@ function App() {
       }, {});
 
       const groupedLogsArray = Object.entries(groupedLogs).map(
-        ([date, logs]) => {
+        ([date, logs]) => { 
           return { date, logs };
         }
       );
@@ -132,7 +141,7 @@ function App() {
                 todaySum={todaySum}
                 remaining={remaining}
                 remainingByTime={remainingByTime}
-                remainingatBedtime={remainingatBedtime}
+                remainingatBedtime={remainingatBedtime} 
                 userSetting={userSetting}
               />
             }

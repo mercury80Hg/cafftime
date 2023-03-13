@@ -5,7 +5,7 @@ import { postLog } from '../ApiService';
 
 
 
-function DataDetail({ selectedItem: }) {
+function DataDetail({ selectedItem }) {
   const navigate = useNavigate();
   const [newLog, setNewLog] = useState({ ...selectedItem });
   const caffeineRatio = selectedItem.caffeine / selectedItem.baseAmount;
