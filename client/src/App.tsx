@@ -1,16 +1,22 @@
-//testerino 
+//testerino
 import './App.css';
-import { useState, useEffect } from "react";
-import { Route, Routes, Link, useLocation } from "react-router-dom";
-import { getLogs } from "../src/ApiService"
+import { useState, useEffect } from 'react';
+import { Route, Routes, Link, useLocation } from 'react-router-dom';
+import { getLogs } from '../src/ApiService';
 import { getDatabase } from '../src/ApiService';
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 import Log from './pages/Log';
 import Daily from './pages/Daily';
 import AddData from './pages/AddData';
 import EditData from './pages/EditData';
-import Setting from "./pages/Setting";
-import { calculateRemaining, setGraphTime, setGraphTimeforTomorrow } from './Utilities';
+import Setting from './pages/Setting';
+import {
+  calculateRemaining,
+  setGraphTime,
+  setGraphTimeforTomorrow,
+} from './Utilities';
+
+
 
 function App() {
   const location = useLocation();
@@ -24,34 +30,23 @@ function App() {
   const [userSetting, setUserSetting] = useState({
     dailyLimit: 400,
     sleepTreshold: 50,
-    sleepTime: "10PM"
+    sleepTime: '10PM',
   });
 
-
-  interface SchemaData {
-    id?: String,
-    name?: String,
-    baseAmount?: Number,
-    caffeine?: Number, 
-    timestamp:Date,
-  }
-
   /* set time for line graph*/
-  const times: Number[]=[];
+  let times;
   for (let i = 6; i <= 24; i++) {
     times.push(setGraphTime(i));
   }
-  console.log(times, "TIMES");
-  
+  console.log(times, 'TIMES');
 
-   for (let i = 1; i <= 4; i++) {
-     times.push(setGraphTimeforTomorrow(i));
-   } 
-
+  for (let i = 1; i <= 4; i++) {
+    times.push(setGraphTimeforTomorrow(i));
+  }
 
   /* Get food DB */
   useEffect(() => {
-    getDatabase().then((res) => { 
+    getDatabase().then((res) => {
       setFoodDb(res);
     });
   }, []);
@@ -59,7 +54,7 @@ function App() {
   /* Get user logs grouped by date*/
   useEffect(() => {
     getLogs().then((res) => {
-      const groupedLogs = res.reduce((acc: Number, log: SchemaData) => {
+      const groupedLogs = res.reduce((acc, log) => {
         const date = new Date(log.timestamp).toDateString();
         if (acc[date]) {
           acc[date].push(log);
@@ -70,7 +65,7 @@ function App() {
       }, {});
 
       const groupedLogsArray = Object.entries(groupedLogs).map(
-        ([date, logs]) => { 
+        ([date, logs]) => {
           return { date, logs };
         }
       );
@@ -100,7 +95,7 @@ function App() {
     /* convert bedtime string(from userSetting) to real time format*/
     const now = DateTime.local();
     const tomorrow = DateTime.local().plus({ days: 1 });
-    const parsedTime = DateTime.fromFormat(userSetting.sleepTime, "ha");
+    const parsedTime = DateTime.fromFormat(userSetting.sleepTime, 'ha');
     let sleepTime;
     if (userSetting.sleepTime.slice(-2) !== 'AM') {
       sleepTime = parsedTime.set({
@@ -112,44 +107,46 @@ function App() {
       sleepTime = parsedTime.set({
         year: tomorrow.year,
         month: tomorrow.month,
-        day: tomorrow.day
+        day: tomorrow.day,
       });
     }
 
     /* Calculate remaining caffeine in body using helper function*/
     setRemaining(calculateRemaining(flattenedLogs));
-    setRemainingByTime(times.map(time => calculateRemaining(filterLogByTime(flattenedLogs, time), time)));
+    setRemainingByTime(
+      times.map((time) =>
+        calculateRemaining(filterLogByTime(flattenedLogs, time), time)
+      )
+    );
     setRemainingatBedTime(calculateRemaining(flattenedLogs, sleepTime));
   }, [logs]); //logs
 
-
-
   /* if we're in add page or edit page, don't show '+' button */
   if (
-    location.pathname === "/add" ||
-    location.pathname.includes("edit") ||
-    location.pathname === "/setting"
+    location.pathname === '/add' ||
+    location.pathname.includes('edit') ||
+    location.pathname === '/setting'
   ) {
     return (
-      <div className="App relative">
+      <div className='App relative'>
         <Routes>
-          <Route path="/log" element={<Log logs={logs} />} />
+          <Route path='/log' element={<Log logs={logs} />} />
           <Route
-            path="/"
+            path='/'
             element={
               <Daily
                 todaySum={todaySum}
                 remaining={remaining}
                 remainingByTime={remainingByTime}
-                remainingatBedtime={remainingatBedtime} 
+                remainingatBedtime={remainingatBedtime}
                 userSetting={userSetting}
               />
             }
           />
-          <Route path="/add" element={<AddData foodDb={foodDb} />} />
-          <Route path="/log/edit/:id" element={<EditData />} />
+          <Route path='/add' element={<AddData foodDb={foodDb} />} />
+          <Route path='/log/edit/:id' element={<EditData />} />
           <Route
-            path="/setting"
+            path='/setting'
             element={
               <Setting
                 userSetting={userSetting}
@@ -163,11 +160,11 @@ function App() {
   }
 
   return (
-    <div className="App relative">
+    <div className='App relative'>
       <Routes>
-        <Route path="/log" element={<Log logs={logs} />} />
+        <Route path='/log' element={<Log logs={logs} />} />
         <Route
-          path="/"
+          path='/'
           element={
             <Daily
               todaySum={todaySum}
@@ -179,10 +176,10 @@ function App() {
             />
           }
         />
-        <Route path="/add" element={<AddData />} />
-        <Route path="/log/edit/:id" element={<EditData />} />
+        <Route path='/add' element={<AddData />} />
+        <Route path='/log/edit/:id' element={<EditData />} />
         <Route
-          path="/setting"
+          path='/setting'
           element={
             <Setting
               userSetting={userSetting}
@@ -191,8 +188,8 @@ function App() {
           }
         />
       </Routes>
-      <Link to="/add">
-        <button className="absolute bottom-16 right-4 min-w-auto w-14 h-14 bg-green-500 p-2 rounded-full hover:bg-green-700 text-white font-semibold">
+      <Link to='/add'>
+        <button className='absolute bottom-16 right-4 min-w-auto w-14 h-14 bg-green-500 p-2 rounded-full hover:bg-green-700 text-white font-semibold'>
           +
         </button>
       </Link>

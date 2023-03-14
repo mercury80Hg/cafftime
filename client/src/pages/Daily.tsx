@@ -2,6 +2,7 @@ import CaffSimulator from '../components/CaffSimulator';
 import LineGraph from '../components/LineGraph';
 import PieChart from '../components/PieChart';
 
+// interface IProps {...}
 
 function Daily({ todaySum, remaining, remainingByTime, remainingatBedtime, userSetting }) {
   return (
@@ -49,5 +50,6 @@ function Daily({ todaySum, remaining, remainingByTime, remainingatBedtime, userS
     </div>
   );
 }
+
 
 export default Daily;

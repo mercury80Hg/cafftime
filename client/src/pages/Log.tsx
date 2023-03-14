@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 
+interface SchemaData {
+  id?: String,
+  name?: String,
+  baseAmount?: Number,
+  caffeine?: Number, 
+  timestamp:Date,
+}
 
-function Log({ logs }) {
+function Log(props:{ logs: Object[] }) {
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
       <div className="relative px-4">
-        {logs.map((log) => {
+        {logs.map((log:any) => {
           return (
             <div className="border-b-2 py-4" key={log.date}>
               <p className="text-2xl font-bold text-left">{log.date}</p>
