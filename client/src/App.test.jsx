@@ -24,23 +24,36 @@
 //   screen.debug(); // <-- this will print out what the dom looks like
 //   // });
 
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, getByRole } from '@testing-library/react';
 import { BrowserRouter, Routes } from 'react-router-dom';
 // import { userSetting, setUserSetting } from './App';
 
 import Setting from './pages/Setting'
-import  userSetting from "./App"
-import  setUserSetting from "./App"
-import  todaySum from "./App"
-import  logs from "./App"
-import  remainingByTime from "./App"
-import  remaining from "./App"
-import  remainingatBedtime from "./App"
+// import  userSetting from "./App"
 
 import Daily from './pages/Daily'
 import Log from './pages/Log'
+import userEvent from '@testing-library/user-event';
 
 describe('renders text', () => {
+
+  const setUserSetting = jest.fn()
+
+  const userSetting = {
+    dailyLimit: 400,
+    sleepTreshold: 50,
+    sleepTime: '10PM',
+    timestamp: new Date(),
+  }
+
+  const logs = [{
+    id: '123',
+    name: 'Al',
+    baseAmount: 0,
+    caffeine: 0, 
+    timestamp:new Date(),
+  }]
+  
 
   it('Settings should render with text "Setting"', () => {
       render(
@@ -50,17 +63,14 @@ describe('renders text', () => {
     );
     const settingText = screen.getByText(/Setting/i);
     expect(settingText).toBeInTheDocument();
+    // fireEvent.click(screen.getByRole("button"))
+    // expect(setUserSetting).toHaveBeenCalled()
   })
 
   it('Daily should render with text "Daily"', () => {
     render(
     <BrowserRouter>
-      <Daily
-        todaySum={todaySum}
-        logs={logs}
-        remaining={remaining}
-        remainingByTime={remainingByTime}
-        remainingatBedtime={remainingatBedtime}
+      <Daily 
         userSetting={userSetting}
       />
     </BrowserRouter>

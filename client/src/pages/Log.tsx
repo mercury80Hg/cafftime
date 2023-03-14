@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 
-interface SchemaData {
-  id?: String,
-  name?: String,
-  baseAmount?: Number,
-  caffeine?: Number, 
-  timestamp:Date,
+interface logProps {
+  logs: [{
+    id?: String,
+    name?: String,
+    baseAmount?: Number,
+    caffeine?: Number, 
+    timestamp:Date,
+  }]
+ 
 }
 
-function Log(props:{ logs: Object[] }) {
+function Log({ logs }: logProps) {
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white">
       <div className="relative px-4">
@@ -19,7 +22,7 @@ function Log(props:{ logs: Object[] }) {
               <p className="text-2xl font-bold text-left">
                 Total Caffeine{" "}
                 <span className="text-2xl font-bold text-red-500">
-                  {log.logs.reduce((acc, log) => {
+                  {logs.reduce((acc, log) => {
                     acc = acc + log.caffeine;
                     return acc;
                   }, 0)}
@@ -27,7 +30,7 @@ function Log(props:{ logs: Object[] }) {
                   mg{" "}
                 </span>
               </p>
-              {log.logs.map((item) => {
+              {logs.map((item) => {
                 const detailUrl = `/log/edit/${item._id}`;
                 return (
                   <Link

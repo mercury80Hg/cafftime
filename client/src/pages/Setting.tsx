@@ -1,7 +1,18 @@
-import { useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Setting({ userSetting, setUserSetting }) {
+interface Props {
+  userSetting: { 
+    dailyLimit: Number,
+    sleepTreshold: Number,
+    sleepTime: String,
+    timestamp: Date,},
+  setUserSetting: () => void
+}
+
+
+function Setting ({ userSetting, setUserSetting }: Props) {
+
   const navigate = useNavigate();
   const [editedSetting, setEditedSetting] = useState({ ...userSetting });
 
