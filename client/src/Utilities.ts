@@ -1,22 +1,24 @@
+import { Logs } from './Types'
+
 /* Helper functions to draw pie chart and line graph*/
 
-export function calculateRemaining(logs, selectedTime = Date.now()) {
+export function calculateRemaining(logs: Logs, selectedTime: number) {
   const halfLife = 5;
   const remainingCaffeine = logs.reduce((acc, item) => {
     const timePassed =
-      (new Date(selectedTime) - new Date(item.timestamp)) / (60 * 60 * 1000);
+      Number(selectedTime - Number(item.log.timestamp)) / (60 * 60 * 1000);
     const halfLivesPassed = timePassed / halfLife;
-    acc += item.caffeine * Math.pow(0.5, halfLivesPassed);
+    acc += (item.log.caffeine) * Math.pow(0.5, halfLivesPassed);
     return acc;
   }, 0);
   return remainingCaffeine;
 }
 
-export function setGraphTime(hour) {
+export function setGraphTime(hour:number) {
   return new Date().setHours(hour, 0, 0, 0);
 }
 
-export function setGraphTimeforTomorrow(hour) {
+export function setGraphTimeforTomorrow(hour:number) {
   const now = new Date();
   return new Date(now.setDate(now.getDate() + 1)).setHours(hour, 0, 0, 0);
 }

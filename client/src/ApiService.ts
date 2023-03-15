@@ -15,8 +15,7 @@ export const getLogs = async () => {
   const response = await fetch(URL + "/log")
     .then((res) => res.json())
     .then((data) => data.timestamp.sort((a: number, b: number) => b - a));
-
-  return response;
+    return response;
 };
 
 export const getLog = async (id: string) => {

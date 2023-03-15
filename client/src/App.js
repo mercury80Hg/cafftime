@@ -1,8 +1,8 @@
 import './App.css';
 import { useState, useEffect } from "react";
 import { Route, Routes, Link, useLocation } from "react-router-dom";
-import { getLogs } from "../src/ApiService"
-import { getDatabase } from '../src/ApiService';
+import { getLogs } from "./ApiService"
+import { getDatabase } from './ApiService';
 import { DateTime } from "luxon";
 import Log from './pages/Log';
 import Daily from './pages/Daily';
@@ -10,10 +10,7 @@ import AddData from './pages/AddData';
 import EditData from './pages/EditData';
 import Setting from "./pages/Setting";
 import { calculateRemaining, setGraphTime, setGraphTimeforTomorrow } from './Utilities';
-
-export function sum(a,b) {
-  return a+b
-}
+import {Logs} from './Types'
 
 function App() {
   const location = useLocation();
@@ -51,8 +48,8 @@ function App() {
   /* Get user logs grouped by date*/
   useEffect(() => {
     getLogs().then((res) => {
-      const groupedLogs = res.reduce((acc, log) => {
-        const date = new Date(log.timestamp).toDateString();
+      const groupedLogs = res.reduce((acc , log) => {
+        const date= new Date(log).toDateString();
         if (acc[date]) {
           acc[date].push(log);
         } else {
