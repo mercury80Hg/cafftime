@@ -1,3 +1,5 @@
+import {Log} from './Types'
+
 const URL = "http://localhost:4000";
 
 /* api service for food DB*/
@@ -8,31 +10,27 @@ export const getDatabase = async () => {
   return response;
 }
 
-interface SchemaData {
-  id?: String,
-  name?: String,
-  baseAmount?: Number,
-  caffeine?: Number, 
-  timestamp:Date,
-}
-
 /* api service for log DB*/
 export const getLogs = async () => {
   const response = await fetch(URL + "/log")
     .then((res) => res.json())
-    .then((data) => data.sort((a: Date, b: Date) => new Date(b.timestamp) - new Date(a.timestamp)));
-
-  return response;
+    .then((data) => data.sort((a:Log, b:Log) => {
+      if(a.timestamp && b.timestamp){
+        return Number(b.timestamp) - Number(a.timestamp)
+      } 
+      return 0
+    }));
+    return response;
 };
 
-export const getLog = async (id: string) => {  
+export const getLog = async (id: string) => {
   const response = await fetch(URL + "/log/edit/" + id)
     .then((res) => res.json())
 
   return response;
 };
-
-export const postLog = async (newLog: SchemaData) => {
+//
+export const postLog = async (newLog: Log) => {
   const response = await fetch(URL + "/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -42,7 +40,7 @@ export const postLog = async (newLog: SchemaData) => {
   return response.json();
 };
 
-export const deleteLog = async (id: string) => {
+export const deleteLog = async (id:string) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "DELETE"
   })
@@ -50,7 +48,7 @@ export const deleteLog = async (id: string) => {
   return response;
 };
 
-export const editLog = async (id:string, editedLog: SchemaData) => {
+export const editLog = async (id: string, editedLog: Log) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
