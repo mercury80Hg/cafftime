@@ -1,4 +1,7 @@
-function CaffSimulator({remaining, remainingatBedtime}) {
+import React from 'react';
+import {AppProps} from '../Types'
+
+function CaffSimulator ({remaining, remainingatBedtime}:AppProps):JSX.Element {
   let bgColor, textColor;
   let bgColorBedtime, textColorBedtime;
 

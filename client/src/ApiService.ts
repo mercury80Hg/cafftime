@@ -15,7 +15,6 @@ export const getLogs = async () => {
   const response = await fetch(URL + "/log")
     .then((res) => res.json())
     .then((data) => data.sort((a:Log, b:Log) => {
-      console.log('getLogsA', a)
       if(a.timestamp && b.timestamp){
         return Number(b.timestamp) - Number(a.timestamp)
       } 

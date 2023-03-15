@@ -9,12 +9,7 @@ export type Log = {
 
 export type Logs = Log[]
 
-
-// const data: Log = 
-// {
-//   "_id": "640f4ba2ae7e38fe8b1cbf9c",
-//   "name": "Red Bull",
-//   "baseAmount": 250,
-//   "caffeine": 80,
-//   "imageUrl": "https://www.caffeineinformer.com/wp-content/caffeine/red-bull.jpg"
-// }
+export type AppProps = {
+    remaining: number,
+    remainingatBedtime: number
+}
