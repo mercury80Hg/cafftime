@@ -4,7 +4,14 @@ const URL = "http://localhost:4000";
 export const getDatabase = async () => {
   const response = await fetch(URL + "/db")
     .then((res) => res.json())
+console.log(response)
+  return response;
+}
 
+export const imThirsty = async () => {
+  const response = await fetch(URL + "/tee")
+    .then((res) => res.json())
+console.log(response)
   return response;
 }
 
