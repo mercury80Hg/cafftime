@@ -1,4 +1,4 @@
-import {Log, Logs} from './Types'
+import {Log} from './Types'
 
 const URL = "http://localhost:4000";
 

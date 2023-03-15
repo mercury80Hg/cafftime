@@ -1,6 +1,3 @@
-type Age = number
-const myAge: Age = 45
-
 export type Log = {
     id?: string,
     name?:string,
@@ -11,6 +8,7 @@ export type Log = {
 }
 
 export type Logs = Log[]
+
 
 // const data: Log = 
 // {
