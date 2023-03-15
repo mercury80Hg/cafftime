@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Setting({ userSetting, setUserSetting }) {
+// { userSetting, setUserSetting }
+function Setting({ setUserSetting }) {
+  // console.log(userSetting, "userSetting");
+  const userSetting = {
+    dailyLimit: 400,
+    sleepTreshold: 50,
+    sleepTime: "10PM"
+  }
+
   const navigate = useNavigate();
   const [editedSetting, setEditedSetting] = useState({ ...userSetting });
 
@@ -11,7 +19,6 @@ function Setting({ userSetting, setUserSetting }) {
       [e.target.name]: e.target.value,
     });
   }
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,7 +45,6 @@ function Setting({ userSetting, setUserSetting }) {
     setUserSetting(editedSetting);
     navigate("/");
   }
-
 
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white relative">

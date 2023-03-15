@@ -12,7 +12,7 @@ function Log({ logs }) {
               <p className="text-2xl font-bold text-left">
                 Total Caffeine{" "}
                 <span className="text-2xl font-bold text-red-500">
-                  {log.logs.reduce((acc, log) => {
+                  {logs.reduce((acc, log) => {
                     acc = acc + log.caffeine;
                     return acc;
                   }, 0)}
@@ -20,7 +20,7 @@ function Log({ logs }) {
                   mg{" "}
                 </span>
               </p>
-              {log.logs.map((item) => {
+              {logs.map((item) => {
                 const detailUrl = `/log/edit/${item._id}`;
                 return (
                   <Link

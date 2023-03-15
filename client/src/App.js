@@ -11,6 +11,10 @@ import EditData from './pages/EditData';
 import Setting from "./pages/Setting";
 import { calculateRemaining, setGraphTime, setGraphTimeforTomorrow } from './Utilities';
 
+export function sum(a,b) {
+  return a+b
+}
+
 function App() {
   const location = useLocation();
   const [logs, setLogs] = useState([]);
