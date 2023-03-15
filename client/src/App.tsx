@@ -1,6 +1,6 @@
 //testerino
 import './App.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
 import { getLogs } from '../src/ApiService';
 import { getDatabase } from '../src/ApiService';
@@ -15,34 +15,33 @@ import {
   setGraphTime,
   setGraphTimeforTomorrow,
 } from './Utilities';
+import type { Logs, Log as LogType } from './Types';
 
+const times: number[] = [];
+for (let i = 6; i <= 24; i++) {
+  times.push(setGraphTime(i));
+}
 
+for (let i = 1; i <= 4; i++) {
+  times.push(setGraphTimeforTomorrow(i));
+}
+
+type LogsState = { date: string; logs: Logs }[];
 
 function App() {
   const location = useLocation();
-  const [logs, setLogs] = useState([]);
-  const [flattenedLogs, setFlattenedLogs] = useState([]);
+  const [logs, setLogs] = useState<LogsState>([]);
+  const [flattenedLogs, setFlattenedLogs] = useState<Logs>([]);
   const [todaySum, setTodaySum] = useState(0);
   const [foodDb, setFoodDb] = useState([]);
-  const [remaining, setRemaining] = useState(calculateRemaining(logs));
-  const [remainingByTime, setRemainingByTime] = useState([]);
+  const [remaining, setRemaining] = useState(0);
+  const [remainingByTime, setRemainingByTime] = useState<number[]>([]);
   const [remainingatBedtime, setRemainingatBedTime] = useState(0);
   const [userSetting, setUserSetting] = useState({
     dailyLimit: 400,
     sleepTreshold: 50,
     sleepTime: '10PM',
   });
-
-  /* set time for line graph*/
-  let times;
-  for (let i = 6; i <= 24; i++) {
-    times.push(setGraphTime(i));
-  }
-  console.log(times, 'TIMES');
-
-  for (let i = 1; i <= 4; i++) {
-    times.push(setGraphTimeforTomorrow(i));
-  }
 
   /* Get food DB */
   useEffect(() => {
@@ -53,50 +52,60 @@ function App() {
 
   /* Get user logs grouped by date*/
   useEffect(() => {
+    let groupedLogsArray: LogsState = [];
     getLogs().then((res) => {
-      const groupedLogs = res.reduce((acc, log) => {
-        const date = new Date(log.timestamp).toDateString();
-        if (acc[date]) {
-          acc[date].push(log);
-        } else {
-          acc[date] = [log];
-        }
-        return acc;
-      }, {});
-
-      const groupedLogsArray = Object.entries(groupedLogs).map(
-        ([date, logs]) => {
-          return { date, logs };
-        }
+      const groupedLogs: Record<string, Logs> = res.reduce(
+        (acc: Record<string, Logs>, log: LogType) => {
+          const date = log.timestamp;
+          if (acc[date]) {
+            acc[date].push(log);
+          } else {
+            acc[date] = [log];
+          }
+          return acc;
+        },
+        {}
       );
+
+      groupedLogsArray = Object.entries(groupedLogs).map(([date, logs]) => {
+        return { date, logs };
+      });
 
       setLogs(groupedLogsArray);
 
-      if (groupedLogsArray[0].date === new Date().toDateString()) {
+      if (
+        DateTime.fromISO(groupedLogsArray[0].date).hasSame(
+          DateTime.now(),
+          'day'
+        )
+      ) {
         setTodaySum(
           groupedLogsArray[0].logs.reduce((acc, log) => {
-            acc = acc + log.caffeine;
-            return acc;
+            return acc + log.caffeine;
           }, 0)
         );
       }
+
+      setFlattenedLogs(groupedLogsArray.flatMap((log) => log.logs));
     });
+  }, []);
 
-    setFlattenedLogs(logs.flatMap((log) => log.logs));
-
-    function filterLogByTime(logs, time) {
-      const filteredLogByTime = logs.filter(
-        (log) => Date.parse(log.timestamp) < time
+  useEffect(() => {
+    console.log('flattenedloigs', flattenedLogs);
+    function filterLogByTime(logArr: Logs, time) {
+      const filteredLogByTime = logArr.filter(
+        (log) => DateTime.fromISO(log.timestamp).hour < time
       );
 
       return filteredLogByTime;
     }
 
+    console.log(userSetting);
     /* convert bedtime string(from userSetting) to real time format*/
     const now = DateTime.local();
     const tomorrow = DateTime.local().plus({ days: 1 });
     const parsedTime = DateTime.fromFormat(userSetting.sleepTime, 'ha');
-    let sleepTime;
+    let sleepTime: DateTime;
     if (userSetting.sleepTime.slice(-2) !== 'AM') {
       sleepTime = parsedTime.set({
         year: now.year,
@@ -112,14 +121,22 @@ function App() {
     }
 
     /* Calculate remaining caffeine in body using helper function*/
+
+    console.log(
+      'calculateRemaining(flattenedLogs)',
+      calculateRemaining(flattenedLogs)
+    );
     setRemaining(calculateRemaining(flattenedLogs));
     setRemainingByTime(
-      times.map((time) =>
-        calculateRemaining(filterLogByTime(flattenedLogs, time), time)
+      times.map((time: number) =>
+        calculateRemaining(
+          filterLogByTime(flattenedLogs, time)
+          // DateTime.local().set({ hour: time })
+        )
       )
     );
     setRemainingatBedTime(calculateRemaining(flattenedLogs, sleepTime));
-  }, [logs]); //logs
+  }, [flattenedLogs]);
 
   /* if we're in add page or edit page, don't show '+' button */
   if (

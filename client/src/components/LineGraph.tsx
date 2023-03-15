@@ -6,6 +6,10 @@ import { DateTime } from "luxon";
 
 ChartJS.register(annotationPlugin, Tooltip);
 
+interface IProps {
+  remainingByTime: number[]
+}
+
 function LineGraph({ remainingByTime, userSetting }) {
   const labels = [];
   for (let i = 6; i <= 28; i++) {
