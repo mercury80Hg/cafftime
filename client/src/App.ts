@@ -48,7 +48,8 @@ function App() {
   /* Get user logs grouped by date*/
   useEffect(() => {
     getLogs().then((res) => {
-      const groupedLogs = res.reduce((acc , log) => {
+      const groupedLogs = res.reduce((acc:any , log:any) => {
+        console.log('log in app.js',log)
         const date= new Date(log).toDateString();
         if (acc[date]) {
           acc[date].push(log);

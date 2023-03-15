@@ -1,4 +1,6 @@
-import {Logs} from './Types'
+import {Log, Logs} from './Types'
+
+
 
 const URL = "http://localhost:4000";
 
@@ -14,7 +16,13 @@ export const getDatabase = async () => {
 export const getLogs = async () => {
   const response = await fetch(URL + "/log")
     .then((res) => res.json())
-    .then((data) => data.timestamp.sort((a: number, b: number) => b - a));
+    .then((data) => data.sort((a:Log, b:Log) => {
+      console.log('getLogsA', a)
+      if(a.timestamp && b.timestamp){
+        return Number(b.timestamp) - Number(a.timestamp)
+      } 
+      return 0
+    }));
     return response;
 };
 
@@ -24,7 +32,7 @@ export const getLog = async (id: string) => {
 
   return response;
 };
-
+//
 export const postLog = async (newLog: Logs) => {
   const response = await fetch(URL + "/add", {
     method: "POST",
