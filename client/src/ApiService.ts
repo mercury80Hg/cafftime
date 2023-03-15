@@ -1,7 +1,5 @@
 import {Log, Logs} from './Types'
 
-
-
 const URL = "http://localhost:4000";
 
 /* api service for food DB*/
@@ -33,7 +31,7 @@ export const getLog = async (id: string) => {
   return response;
 };
 //
-export const postLog = async (newLog: Logs) => {
+export const postLog = async (newLog: Log) => {
   const response = await fetch(URL + "/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -51,7 +49,7 @@ export const deleteLog = async (id:string) => {
   return response;
 };
 
-export const editLog = async (id: string, editedLog: Logs) => {
+export const editLog = async (id: string, editedLog: Log) => {
   const response = await fetch(URL + "/log/edit/" + id, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
