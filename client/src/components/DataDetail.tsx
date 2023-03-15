@@ -1,13 +1,15 @@
+import {FormEvent} from 'react';{}
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { postLog } from '../ApiService';
+import { AppProps, Log } from '../Types';
 
 
-function DataDetail({ selectedItem }) {
+function DataDetail({ selectedItem }:AppProps) {
   const navigate = useNavigate();
   const [newLog, setNewLog] = useState({ ...selectedItem });
-  const caffeineRatio = selectedItem.caffeine / selectedItem.baseAmount;
-  function handleChange(e) {
+  const caffeineRatio = Number(selectedItem.caffeine) / Number(selectedItem.baseAmount);
+  function handleChange(e:any | FormEvent<HTMLInputElement>) {
     if (e.target.name === "baseAmount") {
       const caffeineValue = Math.round(caffeineRatio * e.target.value);
       setNewLog({
@@ -23,7 +25,7 @@ function DataDetail({ selectedItem }) {
     }
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: any | FormEvent<HTMLInputElement>) {
     e.preventDefault();
     const updatedLog = {
       ...newLog,
@@ -36,13 +38,13 @@ function DataDetail({ selectedItem }) {
     handlePost(updatedLog);
   }
 
-function handlePost(updatedLog) {
+function handlePost(updatedLog: Log) {
     postLog(updatedLog);
     navigate("/log");
   }
 
   /* show selected Item and allow users to edit detail */
-  if (selectedItem._id) {
+  if (selectedItem.id) {
     return (
       <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <img src={selectedItem.imageUrl} className="w-24 m-4"></img>
@@ -116,7 +118,7 @@ function handlePost(updatedLog) {
             id="timestamp"
             name="timestamp"
             defaultValue={new Date().toISOString().slice(0, 16)}
-            value={newLog.timestamp}
+            value={Number(newLog.timestamp)}
             onChange={handleChange}
             required
           />

@@ -13,6 +13,7 @@ function AddData({ foodDb }) {
   };
 
 
+
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white relative">
       <Link to="/">

@@ -11,5 +11,7 @@ export type Logs = Log[]
 
 export type AppProps = {
     remaining: number,
-    remainingatBedtime: number
+    remainingatBedtime: number,
+    selectedItem: Log
 }
+
