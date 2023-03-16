@@ -10,4 +10,15 @@ exports.getDataBase = async (ctx: Context) => {
     ctx.status = 500;
     console.log("Internal Server Error", e);
   }
+}
+
+exports.getTee = async (ctx: Context) => {
+  try {
+    ctx.status = 418;
+    ctx.body = `418 I'm a teapot`;
+  } catch (e) {
+    ctx.status = 500;
+    console.log("Internal Server Error", e);
+  }
+
 };

@@ -1,6 +1,7 @@
 import React from 'react'
 import { FC, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { imThirsty } from '../ApiService';
 
 interface UserSetting {
   dailyLimit: number;
@@ -31,6 +32,7 @@ function Setting({ userSetting, setUserSetting }: Props) {
     localStorage.setItem('userSetting', JSON.stringify(editedSetting));
   
     handleEdit();
+    imThirsty();
   }
 
   useEffect(() => {
