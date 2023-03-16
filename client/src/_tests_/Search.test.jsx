@@ -1,6 +1,6 @@
 import Search from '../components/Search'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { prettyDOM } from '@testing-library/react';
+// import { prettyDOM } from '@testing-library/react';
 
 describe('testing Search component', () => {
   const setSearchResult = jest.fn()
@@ -22,8 +22,9 @@ describe('testing Search component', () => {
     const elementSelected = screen.getByTestId('search')
     fireEvent.change(elementSelected,{target: {value: 'test'}});
     expect(elementSelected.value).toBe('test');
-    console.log(prettyDOM(elementSelected))
+    // console.log(prettyDOM(elementSelected))
   });
+
 });
 
 

@@ -59,7 +59,7 @@ function EditData() {
 
   return (
     <div className="rounded-t-2xl h-[calc(80vh-64px)] overflow-scroll bg-white relative">
-      <h1 className="text-2xl font-bold my-6">EDIT DATA</h1>
+      <h1 className="text-2xl font-bold my-6" data-testid='edit' >EDIT DATA</h1>
       <form
         className="flex flex-col items-center"
         onSubmit={handleSubmit}
