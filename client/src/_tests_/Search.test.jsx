@@ -1,12 +1,9 @@
 import Search from '../components/Search'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { prettyDOM } from '@testing-library/react';
 
-import userEvent from '@testing-library/user-event';
-
-describe('renders text', () => {
+describe('testing Search component', () => {
   const setSearchResult = jest.fn()
-  const handleChange = jest.fn();
-
   const props = {
     database:[{
     _id: "640f4ba2ae7e38fe8b1cbf26",
@@ -17,12 +14,17 @@ describe('renders text', () => {
   }] ,
     searchResult: ["item"]
   }
+  const renderComponent = () => 
+    render(<Search setSearchResult={setSearchResult} {...props}/>);
 
-  const renderComponent = () => render(<Search {...props} setSearchResult={setSearchResult} />);
-
-  it('handleChange called when input search change', () => {
+  it("change value of input on change", () => {
     renderComponent()
-    userEvent.type('search'),'hello';
-    expect(handleChange).toHaveBeenCalled();
+    const elementSelected = screen.getByTestId('search')
+    fireEvent.change(elementSelected,{target: {value: 'test'}});
+    expect(elementSelected.value).toBe('test');
+    console.log(prettyDOM(elementSelected))
   });
 });
+
+
+
